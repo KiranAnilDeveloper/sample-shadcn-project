@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Users, CalendarCheck, CheckSquare, TriangleAlert, Plus, InfoIcon } from "lucide-react";
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Alert, AlertTitle, AlertDescription, AlertAction } from "@/components/ui/alert";
+import { appointments } from "@/data/mock/appointments";
+import { AppointmentsCard } from "@/components/dashboard/appointments-card/appointments-card";
 
 export default function DashboardPage() {
   return (
@@ -64,31 +66,9 @@ export default function DashboardPage() {
           - Recent Patients table       (shadcn Table + Badge)
       */}
 
-      <div>
-        table here
-              <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className="text-right">$250.00</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-      </div>
+      <AppointmentsCard></AppointmentsCard>
 
-
-      <div className="flex">
+      {/* <div className="flex">
         <div className="flex-1" >
 
         </div>
@@ -105,7 +85,7 @@ export default function DashboardPage() {
           </Alert>
         </div>
         
-      </div>
+      </div> */}
     </div>
   );
 }
