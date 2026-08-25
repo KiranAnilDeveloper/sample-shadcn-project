@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, CalendarCheck, CheckSquare, TriangleAlert, Plus } from "lucide-react";
+import { Users, CalendarCheck, CheckSquare, TriangleAlert, Plus, InfoIcon } from "lucide-react";
+import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { Alert, AlertTitle, AlertDescription, AlertAction } from "@/components/ui/alert";
 
 export default function DashboardPage() {
   return (
@@ -55,11 +57,55 @@ export default function DashboardPage() {
         />
       </div>
 
+
       {/* TODO: Interns add the following sections:
           - Today's Appointments table  (shadcn Table + Badge + Avatar)
           - Clinical Alerts card        (Card with pastel backgrounds)
           - Recent Patients table       (shadcn Table + Badge)
       */}
+
+      <div>
+        table here
+              <Table>
+        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Invoice</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Method</TableHead>
+            <TableHead className="text-right">Amount</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell className="font-medium">INV001</TableCell>
+            <TableCell>Paid</TableCell>
+            <TableCell>Credit Card</TableCell>
+            <TableCell className="text-right">$250.00</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      </div>
+
+
+      <div className="flex">
+        <div className="flex-1" >
+
+        </div>
+        <div className="flex-1">
+          <Alert>
+          <InfoIcon />
+          <AlertTitle>Heads up!</AlertTitle>
+          <AlertDescription>
+            You can add components and dependencies to your app using the cli.
+          </AlertDescription>
+          <AlertAction>
+            <Button variant="outline">Enable</Button>
+          </AlertAction>
+          </Alert>
+        </div>
+        
+      </div>
     </div>
   );
 }
