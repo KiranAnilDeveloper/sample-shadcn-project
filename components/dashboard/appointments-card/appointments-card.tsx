@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import "./appointments-card.module.css"
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { appointments } from "@/data/mock/appointments";
+import { AppointmentStatus } from "../appointment-status/appointment-status";
 
 
 export function AppointmentsCard(){
@@ -41,7 +42,13 @@ return (
             <TableCell>{appointment.patient}</TableCell>
             <TableCell>{appointment.time}</TableCell>
             <TableCell>{appointment.type}</TableCell>
-            <TableCell className="text-right">{appointment.status}</TableCell>
+
+            <TableCell className="text-right">
+
+            <AppointmentStatus status={appointment.status}></AppointmentStatus>
+
+            </TableCell>
+            
             <TableCell className="text-right">{appointment.status}</TableCell>
           </TableRow>
 
