@@ -1,3 +1,5 @@
+
+
 export type AppointmentStatus = "Confirmed" | "Waiting" | "Completed";
 
 export type Appointment = {

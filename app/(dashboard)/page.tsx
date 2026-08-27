@@ -5,6 +5,8 @@ import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, Table
 import { Alert, AlertTitle, AlertDescription, AlertAction } from "@/components/ui/alert";
 import { appointments } from "@/data/mock/appointments";
 import { AppointmentsCard } from "@/components/dashboard/appointments-card/appointments-card";
+import { ClinicalAlertsCard } from "@/components/dashboard/clinical-alerts-card/clinical-alerts-card";
+import { clinicalAlerts } from "@/data/mock/alerts";
 
 export default function DashboardPage() {
   return (
@@ -66,26 +68,15 @@ export default function DashboardPage() {
           - Recent Patients table       (shadcn Table + Badge)
       */}
 
-      <AppointmentsCard></AppointmentsCard>
-
-      {/* <div className="flex">
-        <div className="flex-1" >
+      <div className="flex gap-5">
+        <div className="flex-1 min-w-0">
+          <AppointmentsCard></AppointmentsCard>
 
         </div>
-        <div className="flex-1">
-          <Alert>
-          <InfoIcon />
-          <AlertTitle>Heads up!</AlertTitle>
-          <AlertDescription>
-            You can add components and dependencies to your app using the cli.
-          </AlertDescription>
-          <AlertAction>
-            <Button variant="outline">Enable</Button>
-          </AlertAction>
-          </Alert>
+        <div className="w-1/5 min-w-70">
+          <ClinicalAlertsCard></ClinicalAlertsCard>
         </div>
-        
-      </div> */}
+      </div>
     </div>
   );
 }
