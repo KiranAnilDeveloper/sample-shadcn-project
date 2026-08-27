@@ -1,6 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, CalendarCheck, CheckSquare, TriangleAlert, Plus } from "lucide-react";
+import { Users, CalendarCheck, CheckSquare, TriangleAlert, Plus, InfoIcon } from "lucide-react";
+import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { Alert, AlertTitle, AlertDescription, AlertAction } from "@/components/ui/alert";
+import { appointments } from "@/data/mock/appointments";
+import { AppointmentsCard } from "@/components/dashboard/appointments-card/appointments-card";
+import { ClinicalAlertsCard } from "@/components/dashboard/clinical-alerts-card/clinical-alerts-card";
+import { clinicalAlerts } from "@/data/mock/alerts";
 
 export default function DashboardPage() {
   return (
@@ -55,11 +61,22 @@ export default function DashboardPage() {
         />
       </div>
 
+
       {/* TODO: Interns add the following sections:
           - Today's Appointments table  (shadcn Table + Badge + Avatar)
           - Clinical Alerts card        (Card with pastel backgrounds)
           - Recent Patients table       (shadcn Table + Badge)
       */}
+
+      <div className="flex gap-5">
+        <div className="flex-1 min-w-0">
+          <AppointmentsCard></AppointmentsCard>
+
+        </div>
+        <div className="w-1/5 min-w-70">
+          <ClinicalAlertsCard></ClinicalAlertsCard>
+        </div>
+      </div>
     </div>
   );
 }
