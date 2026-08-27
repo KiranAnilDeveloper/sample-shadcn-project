@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Bell, Search } from "lucide-react";
+import { ThemeSwitch } from "./themeswitch";
 
 export function DashboardHeader() {
   return (
@@ -23,6 +24,8 @@ export function DashboardHeader() {
           <Bell className="h-[18px] w-[18px] text-muted-foreground" />
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border-2 border-card bg-destructive" />
         </Button>
+
+        <ThemeSwitch></ThemeSwitch>
 
         {/* User Avatar */}
         <Avatar className="h-9 w-9 cursor-pointer">

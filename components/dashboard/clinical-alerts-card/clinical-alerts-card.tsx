@@ -12,15 +12,16 @@ export function ClinicalAlertsCard() {
 
             <CardHeader>
                 Clinical Alerts
-
             </CardHeader>
 
-            {clinicalAlerts.map((alert, index) => (
-    <ClinicalAlertsItemCard
-      key={`${alert.patient}-${index}`}
-      alert={alert}
-    />
-  ))}
+            {
+                clinicalAlerts.map((alert, index) => (
+                <ClinicalAlertsItemCard
+                key={`${alert.patient}-${index}`}
+                alert={alert}
+                />
+                ))
+            }
 
         </Card>
 
