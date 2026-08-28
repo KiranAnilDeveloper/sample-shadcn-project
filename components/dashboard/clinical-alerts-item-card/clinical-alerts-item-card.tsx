@@ -13,15 +13,15 @@ import { ClinicalAlert } from "@/types";
     const variants = {
   critical: {
     card: "bg-red-50 border-red-100",
-    avatar: "text-red-600",
+    avatar: "text-[#a84f4a]",
   },
   warning: {
     card: "bg-amber-50 border-amber-100",
-    avatar: "text-amber-600",
+    avatar: "text[#8a6a2f]",
   },
   info: {
     card: "bg-teal-50 border-teal-100",
-    avatar: "text-teal-600",
+    avatar: "text-[#253333]",
   },
 };
 
@@ -46,23 +46,20 @@ export function ClinicalAlertsItemCard({
           </Avatar>
 
           <span
-            className="text-[13px] font-semibold"
-            style={{ color: testColor }}
+            className={cn("text-[13px] font-semibold",variant.avatar)}
           >
             {alert.patient}
           </span>
         </div>
 
         <p
-          className="mt-2 text-[13px]"
-          style={{ color: testColor }}
+          className={cn("mt-2 text-[13px]",variant.avatar)}
         >
           {alert.message}
         </p>
 
         <p
-          className="mt-1 text-[11px]"
-          style={{ color: testColor }}
+          className={cn("mt-1 text-[11px]",variant.avatar)}
         >
           {alert.timeAgo}
         </p>
