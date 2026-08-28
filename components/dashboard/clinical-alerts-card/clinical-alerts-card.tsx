@@ -8,20 +8,24 @@ export function ClinicalAlertsCard() {
 
     return (
 
-        <Card className="gap-0 h-100">
+        <Card className="gap-0 h-100 py-4 px-5">
 
-            <CardHeader>
+            <div className="mb-4">
                 Clinical Alerts
-            </CardHeader>
-
-            {
-                clinicalAlerts.map((alert, index) => (
-                <ClinicalAlertsItemCard
-                key={`${alert.patient}-${index}`}
-                alert={alert}
-                />
+            </div>
+            <CardContent>
+                {
+                    clinicalAlerts.map((alert, index) => (
+                        <div className="mb-3">
+                            <ClinicalAlertsItemCard
+                                key={`${alert.patient}-${index}`}
+                                alert={alert}
+                            />
+                        </div>
                 ))
             }
+
+            </CardContent>
 
         </Card>
 

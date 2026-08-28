@@ -34,8 +34,6 @@ export function DashboardHeader() {
           </AvatarFallback>
         </Avatar>
       </div>
-
-      <div>table</div>
     </header>
   );
 }
