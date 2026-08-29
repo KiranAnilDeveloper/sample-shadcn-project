@@ -2,6 +2,7 @@ import { Appointment } from "@/types";
 
 export const appointments: Appointment[] = [
   {
+    id:"1",
     patient: "Emily Johnson",
     initials: "EJ",
     time: "09:30 AM",
@@ -9,6 +10,7 @@ export const appointments: Appointment[] = [
     status: "Confirmed",
   },
   {
+     id:"2",
     patient: "Michael Brown",
     initials: "MB",
     time: "10:15 AM",
@@ -16,6 +18,7 @@ export const appointments: Appointment[] = [
     status: "Waiting",
   },
   {
+     id:"3",
     patient: "Olivia Davis",
     initials: "OD",
     time: "11:00 AM",
@@ -23,6 +26,7 @@ export const appointments: Appointment[] = [
     status: "Confirmed",
   },
   {
+     id:"4",
     patient: "James Wilson",
     initials: "JW",
     time: "11:45 AM",

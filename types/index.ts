@@ -3,6 +3,7 @@
 export type AppointmentStatus = "Confirmed" | "Waiting" | "Completed";
 
 export type Appointment = {
+  id:string;
   patient: string;
   initials: string;
   time: string;
@@ -13,6 +14,7 @@ export type Appointment = {
 export type AlertType = "critical" | "warning" | "info";
 
 export type ClinicalAlert = {
+  id:string;
   patient: string;
   initials: string;
   message: string;

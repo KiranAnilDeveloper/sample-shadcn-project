@@ -21,6 +21,8 @@ export default function DashboardPage() {
   className?: string;
 };
 
+console.log(appointments)
+
   const avatarColors = [
   "bg-[#dcecf8] text-[#5b9bc2]",
   "bg-[#e8f6f3] text-[#5fb8a8]",

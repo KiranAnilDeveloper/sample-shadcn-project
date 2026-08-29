@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import Link from "next/link";
 
 type Column<T> = {
   header: string;
@@ -33,7 +34,11 @@ const avatarColors = [
   },
 ];
 
-export function DataTable<T>({
+type HasId = {
+  id: string | number;
+};
+
+export function DataTable<T extends HasId>({
   data,
   columns,
   title,
@@ -87,7 +92,7 @@ export function DataTable<T>({
                         {
                             showActionButton && (
                                 <TableCell className="text-right">
-                                    View 
+                                    <Link href={`/patients/${row.id}`}>View</Link>
                                 </TableCell>
                             )
 

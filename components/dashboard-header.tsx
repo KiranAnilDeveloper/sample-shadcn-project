@@ -1,13 +1,32 @@
+"use client"
+
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Bell, Search } from "lucide-react";
 import { ThemeSwitch } from "./themeswitch";
+import { usePathname } from "next/navigation";
 
 export function DashboardHeader() {
+
+  const pathName = usePathname();
+  const getPageName = () => {
+
+    if(pathName === '/'){
+      return ('Dashboard')
+    }else if(pathName.startsWith('/patient')){
+      return ('Patient Details')
+    }else if(pathName.startsWith('/appointments')){
+      return('Appointments')
+    }else if(pathName.startsWith('/settings')){
+      return('Settings')
+    }
+  }
+  
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-card px-7">
-      <h1 className="text-lg font-semibold">Dashboard</h1>
+      <h1 className="text-lg font-semibold">{getPageName()}</h1>
 
       <div className="flex items-center gap-3">
         {/* Search */}
