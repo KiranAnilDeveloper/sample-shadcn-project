@@ -13,6 +13,11 @@ type DataTableProps<T> = {
   columns: Column<T>[];
   title : string;
   showActionButton? : boolean
+   // Dynamic routes
+  viewAllHref: string;
+  actionBasePath: string;
+  // Specify which property should be used as the ID
+  actionIdKey: keyof T;
 };
 
 const avatarColors = [
@@ -33,16 +38,19 @@ const avatarColors = [
     text: "text-purple-900",
   },
 ];
-
+/* 
 type HasId = {
   id: string | number;
-};
+}; */
 
-export function DataTable<T extends HasId>({
+export function DataTable<T>({     /* extends HasId */
   data,
   columns,
   title,
-  showActionButton = true
+  showActionButton = true,
+  viewAllHref,
+  actionBasePath,
+  actionIdKey
 }: DataTableProps<T>) {
   return (
 
@@ -52,7 +60,12 @@ export function DataTable<T extends HasId>({
         <CardHeader>
             <div className="flex justify-between">
                 <div className="text-base font-medium">{title}</div>
-                <div className="flex items-center  text-[13px]  text-[#5fb8a8]">View all</div>
+                <Link
+            href={viewAllHref}
+            className="flex items-center text-[13px] text-[#5fb8a8]"
+          >
+            View all
+          </Link>
             </div>
         </CardHeader>
         <CardContent className="p-0">
@@ -92,10 +105,9 @@ export function DataTable<T extends HasId>({
                         {
                             showActionButton && (
                                 <TableCell className="text-right">
-                                    <Link href={`/patients/${row.id}`}>View</Link>
+                                    <Link href={`${actionBasePath}/${row[actionIdKey]}`}>View</Link>
                                 </TableCell>
                             )
-
                         }
                     </TableRow>
                     ))}

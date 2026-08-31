@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Bell, Search } from "lucide-react";
 import { ThemeSwitch } from "./themeswitch";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 export function DashboardHeader() {
 
@@ -44,7 +45,8 @@ export function DashboardHeader() {
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border-2 border-card bg-destructive" />
         </Button>
 
-        <ThemeSwitch></ThemeSwitch>
+        {/* <ThemeSwitch></ThemeSwitch> */}
+        <ThemeToggle></ThemeToggle>
 
         {/* User Avatar */}
         <Avatar className="h-9 w-9 cursor-pointer">

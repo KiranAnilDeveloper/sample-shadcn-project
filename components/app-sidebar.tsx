@@ -24,7 +24,7 @@ import {
 
 const navItems = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
-  { title: "Patients", href: "/patients/1", icon: Users },
+  { title: "Patients", href: "/patients/PT-10245", icon: Users },
   { title: "Appointments", href: "/appointments", icon: Calendar },
   { title: "Settings", href: "/settings", icon: Settings },
 ];

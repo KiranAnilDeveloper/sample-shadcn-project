@@ -2,6 +2,8 @@
 
 export type AppointmentStatus = "Confirmed" | "Waiting" | "Completed";
 
+
+
 export type Appointment = {
   id:string;
   patient: string;
@@ -9,6 +11,7 @@ export type Appointment = {
   time: string;
   type: "Follow-up" | "Consultation" | "Check-up";
   status: AppointmentStatus;
+  patientId : string;
 };
 
 export type AlertType = "critical" | "warning" | "info";
@@ -32,4 +35,29 @@ export type RecentPatient = {
   gender: "Female" | "Male";
   lastVisit: string;
   status: PatientStatus;
+  bloodGroup : string;
+  phone : string;
+  address : string;
+  dob: Date;
+  email: string;
+  emergencyContactName : string;
+  emergencyContactPhone : string;
+  emergencyContactRelationship : string;
 };
+
+
+export type Vital = {
+
+  id:string;
+  patientId : string;
+  bloodPressure : string;
+  blodPressureUnit : string;
+  heartRate : string;
+  heartRateUnit : string;
+  temperature : string;
+  temperatureUnit : string;
+  spo2 : string;
+  spo2Unit : string;
+  status : string;
+
+}

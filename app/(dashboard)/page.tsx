@@ -4,14 +4,13 @@ import { Users, CalendarCheck, CheckSquare, TriangleAlert, Plus, InfoIcon } from
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Alert, AlertTitle, AlertDescription, AlertAction } from "@/components/ui/alert";
 import { appointments } from "@/data/mock/appointments";
-import { AppointmentsCard } from "@/components/dashboard/appointments-card/appointments-card";
-import { ClinicalAlertsCard } from "@/components/dashboard/clinical-alerts-card/clinical-alerts-card";
 import { clinicalAlerts } from "@/data/mock/alerts";
 import { Appointment, RecentPatient } from "@/types";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { DataTable } from "@/components/dashboard/datatable/datatable";
+import { DataTable } from "@/components/dashboard/datatable";
 import { recentPatients } from "@/data/mock/patients";
-import { AppointmentStatus } from "@/components/dashboard/appointment-status/appointment-status";
+import { AppointmentStatus } from "@/components/dashboard/appointment-status";
+import { ClinicalAlertsCard } from "@/components/dashboard/clinical-alerts-card";
 
 export default function DashboardPage() {
 
@@ -180,7 +179,7 @@ console.log(appointments)
       <div className="flex gap-5">
         <div className="flex-1 min-w-0">
           {/* <AppointmentsCard></AppointmentsCard> */}
-          <DataTable data={appointments} columns={appointmentColumns} title="Today's Appointments" ></DataTable>
+          <DataTable  viewAllHref="" actionBasePath="/patients" actionIdKey="patientId" data={appointments} columns={appointmentColumns} title="Today's Appointments" ></DataTable>
 
         </div>
         <div className="w-1/5 min-w-70">
@@ -189,7 +188,7 @@ console.log(appointments)
       </div>
 
       <div className="mt-6">
-          <DataTable data={recentPatients} columns={patientColumns} title="Recent Patients"></DataTable>
+          <DataTable viewAllHref="" actionBasePath="/patients" actionIdKey="id" data={recentPatients} columns={patientColumns} title="Recent Patients"></DataTable>
       </div>
     </div>
   );
