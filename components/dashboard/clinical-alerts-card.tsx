@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { ClinicalAlertsItemCard } from "../clinical-alerts-item-card/clinical-alerts-item-card";
 import { clinicalAlerts } from "@/data/mock/alerts";
+import { ClinicalAlertsItemCard } from "./clinical-alerts-item-card";
 
 
 

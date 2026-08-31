@@ -2,6 +2,7 @@ import { ClinicalAlert } from "@/types";
 
 export const clinicalAlerts: ClinicalAlert[] = [
   {
+    id:"1",
     patient: "John Smith",
     initials: "JS",
     message: "Blood pressure reading requires review.",
@@ -9,6 +10,7 @@ export const clinicalAlerts: ClinicalAlert[] = [
     type: "critical",
   },
   {
+    id:"2",
     patient: "Maria Thomas",
     initials: "MT",
     message: "Follow-up appointment overdue.",
@@ -16,6 +18,7 @@ export const clinicalAlerts: ClinicalAlert[] = [
     type: "warning",
   },
   {
+    id:"3",
     patient: "Robert Lee",
     initials: "RL",
     message: "Lab results ready for review.",
