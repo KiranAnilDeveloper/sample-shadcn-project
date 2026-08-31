@@ -99,7 +99,9 @@ export default async function PatientsPage( props : PatientsPageProps) {
             </TabsContent>
 
             <TabsContent value="APP">
-              <div>Appointents</div>
+              <div className="mt-4">    
+                  <DataTable viewAllHref="" showActionButton={false} actionBasePath="/patients" actionIdKey="id" data={recentAppointments} columns={appointmentColumns} title="Recent Appointments"></DataTable>
+              </div>       
             </TabsContent>
 
             <TabsContent value="DOC">
