@@ -16,7 +16,9 @@ export function ClinicalAlertsCard() {
             <CardContent>
                 {
                     clinicalAlerts.map((alert, index) => (
-                        <div className="mb-3">
+                        <div 
+                        key={alert.id}
+                        className="mb-3">
                             <ClinicalAlertsItemCard
                                 key={`${alert.patient}-${index}`}
                                 alert={alert}

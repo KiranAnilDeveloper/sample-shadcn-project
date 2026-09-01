@@ -28,6 +28,9 @@ type PatientsPageProps = {
   params: Promise<{
     id: string;
   }>;
+   searchParams: Promise<{
+    from: string;
+  }>;
 };
 
  const appointmentColumns: Column<Appointment>[] = [
@@ -54,6 +57,19 @@ type PatientsPageProps = {
 export default async function PatientsPage( props : PatientsPageProps) {
 
     const { id } = await props.params;
+    const { from } = await props.searchParams;
+
+     const backUrl =
+    from === "dashboard"
+      ? "/"
+      : "/patients";
+
+  const backText =
+    from === "dashboard"
+      ? "Back to Dashboard"
+      :  "Back to Patients";
+
+
    // const selectionColor = "data-active:text-blue-600 data-active:after:bg-blue-600";
     const selectionColor = "data-active:text-[#5fb8a8] data-active:after:bg-[#5fb8a8]";
     const paddingForTab = "px-5";
@@ -63,8 +79,8 @@ export default async function PatientsPage( props : PatientsPageProps) {
   return (
     <div>
 
-      <Link href={"/"} className="inline-flex items-center text-[13px] text-[#5fb8a8] mb-4" >
-             <ArrowLeft size={16} /> <span className="ml-1">Back to Patients</span>
+      <Link href={backUrl} className="inline-flex items-center text-[13px] text-[#5fb8a8] mb-4" >
+             <ArrowLeft size={16} /> <span className="ml-1">{backText}</span>
       </Link>
 
       <PatientHeaderCard id={id}></PatientHeaderCard>

@@ -179,7 +179,7 @@ console.log(appointments)
       <div className="flex gap-5">
         <div className="flex-1 min-w-0">
           {/* <AppointmentsCard></AppointmentsCard> */}
-          <DataTable  viewAllHref="" actionBasePath="/patients" actionIdKey="patientId" data={appointments} columns={appointmentColumns} title="Today's Appointments" ></DataTable>
+          <DataTable  viewAllHref="" actionBasePath="/patientdetails" actionIdKey="patientId" data={appointments} columns={appointmentColumns} title="Today's Appointments" ></DataTable>
 
         </div>
         <div className="w-1/5 min-w-70">
@@ -188,7 +188,7 @@ console.log(appointments)
       </div>
 
       <div className="mt-6">
-          <DataTable viewAllHref="" actionBasePath="/patients" actionIdKey="id" data={recentPatients} columns={patientColumns} title="Recent Patients"></DataTable>
+          <DataTable viewAllHref="" actionBasePath="/patientdetails" actionIdKey="id" data={recentPatients} columns={patientColumns} title="Recent Patients"></DataTable>
       </div>
     </div>
   );
