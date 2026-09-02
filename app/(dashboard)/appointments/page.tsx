@@ -1,10 +1,15 @@
+import { appointmentFilters } from "@/components/dashboard/datatable/appointment-filters";
+import { appointmentsColumns } from "@/components/dashboard/datatable/appointments.-columns";
+import { DataTableTanstack } from "@/components/dashboard/datatable/datatable-tanstack";
+import { appointments } from "@/data/mock/appointments";
+
 export default function AppointmentsPage() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold">Appointments</h2>
-      <p className="mt-1 text-sm text-muted-foreground">
-        This page is under construction.
-      </p>
-    </div>
+          <div className="container mx-auto py-10">
+          <DataTableTanstack filters={appointmentFilters} viewAllHref="" actionBasePath="/appointmentdetails" actionIdKey="id" 
+          title="Appointments" columns={appointmentsColumns} data={appointments} />
+                </div>
+        </div>
   );
 }

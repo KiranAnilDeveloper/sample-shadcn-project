@@ -25,7 +25,7 @@ export type ClinicalAlert = {
   type: AlertType;
 };
 
-export type PatientStatus = "Stable" | "Follow-up";
+export type PatientStatus = "Stable" | "Follow-up" |"Critical";
 
 export type RecentPatient = {
   name: string;

@@ -11,6 +11,11 @@ import { DataTable } from "@/components/dashboard/datatable";
 import { recentPatients } from "@/data/mock/patients";
 import { AppointmentStatus } from "@/components/dashboard/appointment-status";
 import { ClinicalAlertsCard } from "@/components/dashboard/clinical-alerts-card";
+import { DataTableTanstack } from "@/components/dashboard/datatable/datatable-tanstack";
+import { appointmentFilters } from "@/components/dashboard/datatable/appointment-filters";
+import { appointmentsColumns } from "@/components/dashboard/datatable/appointments.-columns";
+import { patientFilters } from "@/components/dashboard/datatable/patients-filters";
+import { patientColumns } from "@/components/dashboard/datatable/patients-columns";
 
 export default function DashboardPage() {
 
@@ -28,94 +33,6 @@ console.log(appointments)
   "bg-[#f0eaf8] text-[#9a83c4]",
   "bg-[#fde8e7] text-[#d97973]",
 ];
-
-  const patientColumns: Column<RecentPatient>[] = [
-  {
-    header: "PATIENT",
-    accessor: (patient) => { 
-      
-    const color =
-    avatarColors[patient.initials.charCodeAt(0) % avatarColors.length];
-      
-      return (
-      <div className="flex items-center gap-2">
-        <Avatar className="h-7 w-7">
-          <AvatarFallback className={color}>
-            {patient.initials}
-          </AvatarFallback>
-        </Avatar>
-
-        {patient.name}
-      </div>
-    )},
-  },
-  {
-    header: "ID",
-    accessor: (patient) => patient.id,
-    className : "text-[#8a9696]"
-  },
-  {
-    header: "AGE",
-    accessor: (patient) => patient.age,
-    className : "text-[#687777]"
-  },
-  {
-    header: "GENDER",
-    accessor: (patient) => patient.gender,
-    className : "text-[#687777]"
-  },
-  {
-    header: "LAST VISIT",
-    accessor: (patient) => patient.lastVisit,
-    className : "text-[#687777]"
-  },
-  {
-    header: "STATUS",
-    accessor: (patient) => (
-      // <PatientStatus status={patient.status} />
-      <AppointmentStatus status={patient.status}></AppointmentStatus>
-    ),
-  },
-];
-
-  const appointmentColumns: Column<Appointment>[] = [
-  {
-    header: "PATIENT",
-    accessor: (appointment) => {
-      const color =
-      avatarColors[appointment.initials.charCodeAt(0) % avatarColors.length];
-      
-      return(
-      <div className="flex items-center gap-2">
-        <Avatar className="h-7 w-7">
-          <AvatarFallback className={color}>
-            {appointment.initials}
-          </AvatarFallback>
-        </Avatar>
-
-        {appointment.patient}
-      </div>
-    )},
-  },
-  {
-    header: "TIME",
-    accessor: (appointment) => appointment.time,
-    className: "text-[#687777]",
-  },
-  {
-    header: "TYPE",
-    accessor: (appointment) => appointment.type,
-    className: "text-[#687777]",
-  },
-  {
-    header: "STATUS",
-    accessor: (appointment) => (
-      <AppointmentStatus status={appointment.status} />
-    ),
-  },
-];
-
-
 
   return (
     <div>
@@ -179,7 +96,12 @@ console.log(appointments)
       <div className="flex gap-5">
         <div className="flex-1 min-w-0">
           {/* <AppointmentsCard></AppointmentsCard> */}
-          <DataTable  viewAllHref="" actionBasePath="/patients" actionIdKey="patientId" data={appointments} columns={appointmentColumns} title="Today's Appointments" ></DataTable>
+          {/* <DataTable  viewAllHref="" actionBasePath="/patientdetails" actionIdKey="patientId" data={appointments} columns={appointmentColumns} title="Today's Appointments" ></DataTable> */}
+
+          <DataTableTanstack filters={appointmentFilters} viewAllHref="" actionBasePath="/appointmentdetails" actionIdKey="id" 
+                    title="Recent Appointments" columns={appointmentsColumns} data={appointments} isPaginationrequired={false} isFilterRequired={false}
+                    tableHeight="326px" />
+
 
         </div>
         <div className="w-1/5 min-w-70">
@@ -188,7 +110,9 @@ console.log(appointments)
       </div>
 
       <div className="mt-6">
-          <DataTable viewAllHref="" actionBasePath="/patients" actionIdKey="id" data={recentPatients} columns={patientColumns} title="Recent Patients"></DataTable>
+          <DataTableTanstack filters={patientFilters} viewAllHref="" actionBasePath="/patientdetails" actionIdKey="id" 
+                    title="Recent Patients" columns={patientColumns} data={recentPatients} isPaginationrequired={false} isFilterRequired={false}
+                    tableHeight="326px" /> 
       </div>
     </div>
   );
