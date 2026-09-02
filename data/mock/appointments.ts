@@ -1,40 +1,63 @@
 import { Appointment } from "@/types";
+import { recentPatients } from "./patients";
 
-export const appointments: Appointment[] = [
-  {
-    id:"1",
-    patient: "Emily Johnson",
-    initials: "EJ",
-    time: "09:30 AM",
-    type: "Follow-up",
-    status: "Confirmed",
-    patientId:"PT-10245"
-  },
-  {
-     id:"2",
-    patient: "Michael Brown",
-    initials: "MB",
-    time: "10:15 AM",
-    type: "Consultation",
-    status: "Waiting",
-    patientId:"PT-10312"
-  },
-  {
-    id:"3",
-    patient: "Olivia Davis",
-    initials: "OD",
-    time: "11:00 AM",
-    type: "Check-up",
-    status: "Confirmed",
-    patientId:"PT-10198"
-  },
-  {
-     id:"4",
-    patient: "James Wilson",
-    initials: "JW",
-    time: "11:45 AM",
-    type: "Follow-up",
-    status: "Completed",
-    patientId:"PT-10199"
-  },
+const appointmentTypes: Appointment["type"][] = [
+  "Follow-up",
+  "Consultation",
+  "Check-up",
 ];
+
+const statuses: Appointment["status"][] = [
+  "Confirmed",
+  "Waiting",
+  "Completed",
+];
+
+const generateTime = (index: number) => {
+  // Appointments between 8:30 AM and 5:30 PM
+  const startMinutes = 8 * 60 + 30;
+  const interval = 30;
+
+  const totalMinutes = startMinutes + (index % 19) * interval;
+
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  const period = hours >= 12 ? "PM" : "AM";
+  const displayHour = hours % 12 || 12;
+
+  return `${displayHour}:${minutes
+    .toString()
+    .padStart(2, "0")} ${period}`;
+};
+
+export const appointments: Appointment[] = Array.from(
+  { length: 100 },
+  (_, index) => {
+    // Reuse patients generated in recentPatients
+    const patient = recentPatients[index % recentPatients.length];
+
+    return {
+      id: String(index + 1),
+
+      patient: patient.name,
+
+      initials: patient.initials,
+
+      time: generateTime(index),
+
+      type:
+        appointmentTypes[
+          Math.floor(Math.random() * appointmentTypes.length)
+        ],
+
+      status:
+        statuses[
+          Math.floor(Math.random() * statuses.length)
+        ],
+
+      // Important: appointment points to the actual patient
+      patientId: patient.id,
+    };
+  }
+);

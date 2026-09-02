@@ -19,6 +19,7 @@ import { DataTablePagination } from "./datatable-pagination"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { DataTableFilter, DataTableFilters } from "./data-table-filters"
 
 interface DataTableProps<TData extends RowData> {
   columns: ColumnDef<DataTableFeatures, TData>[]
@@ -30,6 +31,10 @@ interface DataTableProps<TData extends RowData> {
   viewAllHref: string
   actionBasePath: string
   actionIdKey: keyof TData
+  filters?: DataTableFilter<TData>[]
+  isPaginationrequired? : boolean
+  isFilterRequired?: boolean
+  tableHeight?: string
 }
 
 export function DataTableTanstack<TData extends RowData>({
@@ -40,6 +45,10 @@ export function DataTableTanstack<TData extends RowData>({
   viewAllHref,
   actionBasePath,
   actionIdKey,
+  filters = [],
+  isPaginationrequired = true,
+  isFilterRequired = true,
+  tableHeight,
 }: DataTableProps<TData>) {
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -66,32 +75,8 @@ export function DataTableTanstack<TData extends RowData>({
 
     <div>
       
-     
-
-<ToggleGroup
-  value={selectedStatus}
-  onValueChange={(values) => {
-    setSelectedStatus(values)
-
-    const status = values[0]
-
-    table.getColumn("status")?.setFilterValue(status || undefined)
-  }}
->
-  <ToggleGroupItem value="Stable">
-    Stable
-  </ToggleGroupItem>
-
-  <ToggleGroupItem value="Critical">
-    Critical
-  </ToggleGroupItem>
-
-  <ToggleGroupItem value="Follow-up">
-    Follow-up
-  </ToggleGroupItem>
-</ToggleGroup>
       
-    <div className="flex items-center py-4">
+    {/* <div className="flex items-center py-4 gap-3">
         <Input
           placeholder="Filter Name..."
           value={(table.getColumn("initials")?.getFilterValue() as string) ?? ""}
@@ -100,7 +85,41 @@ export function DataTableTanstack<TData extends RowData>({
           }
           className="max-w-sm"
         />
-    </div>
+
+          <ToggleGroup variant="outline"
+            value={selectedStatus}
+            onValueChange={(values) => {
+              setSelectedStatus(values)
+
+              const status = values[0]
+
+              table.getColumn("status")?.setFilterValue(status || undefined)
+            }}
+          >
+            <ToggleGroupItem value="Stable">
+              Stable
+            </ToggleGroupItem>
+
+            <ToggleGroupItem value="Critical">
+              Critical
+            </ToggleGroupItem>
+
+            <ToggleGroupItem value="Follow-up">
+              Follow-up
+            </ToggleGroupItem>
+          </ToggleGroup>
+        
+    </div> */}
+
+    {
+      isFilterRequired &&
+    filters.length > 0 && (
+      <DataTableFilters
+        table={table}
+        filters={filters}
+      />
+    )
+    }
 
     <Card className="gap-0">
       {/* Header */}
@@ -121,7 +140,9 @@ export function DataTableTanstack<TData extends RowData>({
 
       {/* Table */}
       <CardContent className="p-0">
-        <Table>
+        <div className={tableHeight ? "overflow-y-auto" : undefined}
+             style={tableHeight ? { maxHeight: tableHeight } : undefined}>
+          <Table >
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow
@@ -188,35 +209,19 @@ export function DataTableTanstack<TData extends RowData>({
             )}
           </TableBody>
         </Table>
+        </div>
       </CardContent>
 
       {/* Pagination */}
-      <DataTablePagination table={table}></DataTablePagination>
-      {/* <div className="flex items-center justify-end gap-2 px-4 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => {
-            
-            table.previousPage()
-            console.log("previous page")
-
-          }
-          }
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div> */}  
+      {
+        isPaginationrequired && 
+        <div className="flex justify-end">
+        <div>
+            <DataTablePagination table={table}></DataTablePagination>
+        </div>
+      </div>
+      }
+      
     </Card>
     </div>
   )
