@@ -93,8 +93,8 @@ console.log(appointments)
           - Recent Patients table       (shadcn Table + Badge)
       */}
 
-      <div className="flex gap-5">
-        <div className="flex-1 min-w-0">
+      <div className="flex flex-col gap-5 md:flex-row">
+        <div className="order-2 flex-1 min-w-0  md:order-1">
           {/* <AppointmentsCard></AppointmentsCard> */}
           {/* <DataTable  viewAllHref="" actionBasePath="/patientdetails" actionIdKey="patientId" data={appointments} columns={appointmentColumns} title="Today's Appointments" ></DataTable> */}
 
@@ -104,7 +104,7 @@ console.log(appointments)
 
 
         </div>
-        <div className="w-1/5 min-w-70">
+        <div className="order-1  md:order-2 w-full min-w-0 md:w-1/5 md:min-w-70">
           <ClinicalAlertsCard></ClinicalAlertsCard>
         </div>
       </div>

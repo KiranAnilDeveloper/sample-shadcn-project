@@ -27,7 +27,8 @@ export function DashboardHeader() {
   
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-card px-7">
-      <h1 className="text-lg font-semibold">{getPageName()}</h1>
+     {/*  hiding header text for small screens */}
+      <h1 className="hidden sm:block text-lg font-semibold">{getPageName()}</h1>
 
       <div className="flex items-center gap-3">
         {/* Search */}
