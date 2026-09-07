@@ -40,11 +40,11 @@ export function DashboardHeader() {
 
       <div className="flex items-center gap-3">
         {/* Search */}
-        <div className="relative">
+        <div className="relative hidden sm:block">
           <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="Search patients..."
-            className="h-9 w-[220px] bg-background pl-8 text-sm"
+            className="h-9 w-[180px] bg-background pl-8 text-sm md:w-[220px]"
           />
         </div>
 
@@ -54,17 +54,28 @@ export function DashboardHeader() {
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border-2 border-card bg-destructive" />
         </Button> */}
 
-        <NotificationDrawwer></NotificationDrawwer>
+<div className="flex h-8 w-8 items-center justify-center sm:h-9 sm:w-9">
+          <NotificationDrawwer></NotificationDrawwer>
+</div>
+        
+{/* <ThemeSwitch></ThemeSwitch> */}
+        
 
-        {/* <ThemeSwitch></ThemeSwitch> */}
-        <ThemeToggle></ThemeToggle>
+<div className="flex h-8 w-8 items-center justify-center sm:h-9 sm:w-9">
+         <ThemeToggle></ThemeToggle>
+</div>
 
-        {/* User Avatar */}
+ {/* User Avatar */}
+
+<div className="flex h-8 w-8 items-center justify-center sm:h-9 sm:w-9">
         <Avatar className="h-9 w-9 cursor-pointer">
           <AvatarFallback className="bg-accent text-sm font-semibold text-accent-foreground">
             DS
           </AvatarFallback>
         </Avatar>
+</div>
+
+       
       </div>
     </header>
   );
