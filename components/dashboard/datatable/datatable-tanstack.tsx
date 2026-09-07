@@ -52,7 +52,7 @@ export function DataTableTanstack<TData extends RowData>({
 }: DataTableProps<TData>) {
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
-  const [selectedStatus, setSelectedStatus] = useState<string[]>([])
+//  const [selectedStatus, setSelectedStatus] = useState<string[]>([])
 
   const table = useTable({
     features,
@@ -74,42 +74,6 @@ export function DataTableTanstack<TData extends RowData>({
   return (
 
     <div>
-      
-      
-    {/* <div className="flex items-center py-4 gap-3">
-        <Input
-          placeholder="Filter Name..."
-          value={(table.getColumn("initials")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("initials")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-
-          <ToggleGroup variant="outline"
-            value={selectedStatus}
-            onValueChange={(values) => {
-              setSelectedStatus(values)
-
-              const status = values[0]
-
-              table.getColumn("status")?.setFilterValue(status || undefined)
-            }}
-          >
-            <ToggleGroupItem value="Stable">
-              Stable
-            </ToggleGroupItem>
-
-            <ToggleGroupItem value="Critical">
-              Critical
-            </ToggleGroupItem>
-
-            <ToggleGroupItem value="Follow-up">
-              Follow-up
-            </ToggleGroupItem>
-          </ToggleGroup>
-        
-    </div> */}
 
     {
       isFilterRequired &&

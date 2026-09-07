@@ -11,6 +11,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarSeparator,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -31,6 +32,8 @@ const navItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar className="border-r border-border">
@@ -56,7 +59,7 @@ export function AppSidebar() {
                       ? "font-medium"
                       : "text-muted-foreground font-medium"
                   }
-                  render={<Link href={item.href} />}
+                  render={<Link href={item.href}  onClick={() => setOpenMobile(false)}   />}
                 >
                   <item.icon className="h-[18px] w-[18px]" />
                   <span>{item.title}</span>

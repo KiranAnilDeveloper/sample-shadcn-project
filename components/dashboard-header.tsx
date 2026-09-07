@@ -8,6 +8,8 @@ import { Bell, Search } from "lucide-react";
 import { ThemeSwitch } from "./themeswitch";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
+import { NotificationDrawwer } from "./notification-drawer";
+import { SidebarTrigger } from "./ui/sidebar";
 
 export function DashboardHeader() {
 
@@ -27,7 +29,14 @@ export function DashboardHeader() {
   
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-card px-7">
-      <h1 className="text-lg font-semibold">{getPageName()}</h1>
+     {/*  hiding header text for small screens */}
+      
+      <div className="flex items-center gap-3">
+        {/* Visible only on small screens */}
+        <SidebarTrigger className="lg:hidden" />
+
+        <h1 className="hidden sm:block text-lg font-semibold">{getPageName()}</h1>
+      </div>
 
       <div className="flex items-center gap-3">
         {/* Search */}
@@ -40,10 +49,12 @@ export function DashboardHeader() {
         </div>
 
         {/* Notification Bell */}
-        <Button variant="outline" size="icon" className="relative h-9 w-9">
+        {/* <Button variant="outline" size="icon" className="relative h-9 w-9">
           <Bell className="h-[18px] w-[18px] text-muted-foreground" />
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border-2 border-card bg-destructive" />
-        </Button>
+        </Button> */}
+
+        <NotificationDrawwer></NotificationDrawwer>
 
         {/* <ThemeSwitch></ThemeSwitch> */}
         <ThemeToggle></ThemeToggle>
