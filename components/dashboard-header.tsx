@@ -28,10 +28,10 @@ export function DashboardHeader() {
   }
   
   return (
-    <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-card px-7">
+    <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-card px-3 sm:px-5 lg:px-7">
      {/*  hiding header text for small screens */}
       
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1.5 sm:gap-3">
         {/* Visible only on small screens */}
         <SidebarTrigger className="lg:hidden" />
 
