@@ -8,6 +8,7 @@ import { Bell, Search } from "lucide-react";
 import { ThemeSwitch } from "./themeswitch";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
+import { NotificationDrawwer } from "./notification-drawer";
 
 export function DashboardHeader() {
 
@@ -41,10 +42,12 @@ export function DashboardHeader() {
         </div>
 
         {/* Notification Bell */}
-        <Button variant="outline" size="icon" className="relative h-9 w-9">
+        {/* <Button variant="outline" size="icon" className="relative h-9 w-9">
           <Bell className="h-[18px] w-[18px] text-muted-foreground" />
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border-2 border-card bg-destructive" />
-        </Button>
+        </Button> */}
+
+        <NotificationDrawwer></NotificationDrawwer>
 
         {/* <ThemeSwitch></ThemeSwitch> */}
         <ThemeToggle></ThemeToggle>

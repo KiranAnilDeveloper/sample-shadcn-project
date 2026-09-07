@@ -1,0 +1,60 @@
+import { mockNotifications } from "@/data/mock/notifications";
+import { Button } from "./ui/button";
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "./ui/drawer";
+import { NotificationItem } from "./notification-item-card";
+
+export function NotificationDrawwer(){
+
+    const unreadCount = mockNotifications.filter(
+    (notification) => !notification.read
+  ).length
+
+
+    return (
+    <Drawer swipeDirection="right">
+      <DrawerTrigger render={<Button variant="secondary">O</Button>} />
+      <DrawerContent className="w-full! sm:w-[320px]! rounded-none! right-0!">
+        <div className="w-full overflow-hidden">
+      {/* Header */}
+      <div className="flex h-[58px] items-center justify-between border-b px-4">
+        <div className="flex items-center gap-2">
+          <h2 className="text-sm font-semibold">
+            Notifications
+          </h2>
+
+          {unreadCount > 0 && (
+            <span className="rounded-none bg-red-50 px-2 py-0.5 text-[10px] font-medium text-red-400">
+              {unreadCount} new
+            </span>
+          )}
+        </div>
+
+<DrawerClose render={<button
+          type="button"
+          className="text-xl leading-none text-muted-foreground hover:text-foreground"
+        >
+          ×
+        </button>} />
+        
+      </div>
+
+      {/* Notification list */}
+      <div>
+        {mockNotifications.map((notification) => (
+          <NotificationItem
+            key={notification.id}
+            type={notification.type}
+            title={notification.title}
+            message={notification.message}
+            timestamp={notification.timestamp}
+            read={notification.read}
+          />
+        ))}
+      </div>
+    </div>
+      </DrawerContent>
+    </Drawer>
+  )
+
+
+}

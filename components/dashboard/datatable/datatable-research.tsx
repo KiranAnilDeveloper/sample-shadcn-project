@@ -23,6 +23,7 @@ import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Appointment } from "@/types"
+import { useDebounce } from "@/hooks/useDebounce"
 
 interface DataTableProps<TData extends RowData> {
   columns: ColumnDef<DataTableFeatures, TData>[]
@@ -51,6 +52,9 @@ export function DataTableResearch<TData extends RowData>({
 }: DataTableProps<TData>) {
 
   const [search,setSearch] = useState("")
+  //const [debouncedSearch,setDebouncedSearch] = useState("")
+
+  const debouncedSearch = useDebounce(search,500);
 
   //const appointmentData = data as unknown as Appointment[];
 
@@ -58,16 +62,18 @@ export function DataTableResearch<TData extends RowData>({
 
 //const filterKey : keyof TData
 //memo
+
+
   const filteredData = useMemo(() => {
     console.log("Filtering")
 
-    if(search === "") 
+    if(debouncedSearch === "") 
       return data 
     
     return data.filter((appointment) =>  {
-         return (appointment as Appointment).patient.toLowerCase().includes(search.toLowerCase())
+         return (appointment as Appointment).patient.toLowerCase().includes(debouncedSearch.toLowerCase())
     });
-  },[data,search])
+  },[data,debouncedSearch])
 //
 
   //use filtered data
@@ -101,7 +107,7 @@ export function DataTableResearch<TData extends RowData>({
 
   useEffect(() => {
   setPage(1)
-}, [search])
+}, [debouncedSearch])
 
   const getVisiblePages = () => {
 /*   if (totalPages <= 3) {
