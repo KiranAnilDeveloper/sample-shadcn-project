@@ -9,6 +9,7 @@ import { ThemeSwitch } from "./themeswitch";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 import { NotificationDrawwer } from "./notification-drawer";
+import { SidebarTrigger } from "./ui/sidebar";
 
 export function DashboardHeader() {
 
@@ -29,7 +30,13 @@ export function DashboardHeader() {
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-card px-7">
      {/*  hiding header text for small screens */}
-      <h1 className="hidden sm:block text-lg font-semibold">{getPageName()}</h1>
+      
+      <div className="flex items-center gap-3">
+        {/* Visible only on small screens */}
+        <SidebarTrigger className="lg:hidden" />
+
+        <h1 className="hidden sm:block text-lg font-semibold">{getPageName()}</h1>
+      </div>
 
       <div className="flex items-center gap-3">
         {/* Search */}

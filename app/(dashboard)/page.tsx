@@ -51,7 +51,7 @@ console.log(appointments)
       </div>
 
       {/* Stats Cards */}
-      <div className="mb-6 grid grid-cols-4 gap-4">
+      <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
         <StatsCard
           title="Total Patients"
           value="1,248"
