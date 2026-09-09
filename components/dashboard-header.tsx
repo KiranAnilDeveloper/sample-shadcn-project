@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 import { NotificationDrawwer } from "./notification-drawer";
 import { SidebarTrigger } from "./ui/sidebar";
+import { DropdownProfile } from "./dropdown-profile";
 
 export function DashboardHeader() {
 
@@ -67,13 +68,9 @@ export function DashboardHeader() {
 
  {/* User Avatar */}
 
-<div className="flex h-8 w-8 items-center justify-center sm:h-9 sm:w-9">
-        <Avatar className="h-9 w-9 cursor-pointer">
-          <AvatarFallback className="bg-accent text-sm font-semibold text-accent-foreground">
-            DS
-          </AvatarFallback>
-        </Avatar>
-</div>
+
+
+<DropdownProfile></DropdownProfile>
 
        
       </div>
