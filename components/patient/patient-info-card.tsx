@@ -21,7 +21,7 @@ export function PatientInfoCard({id} : PatientInfoCardProps ){
 
     return (
 
-        <Card className="gap-0 h-100 py-4 px-5 mt-5">
+        <Card className="gap-0 h-100 py-4 px-5 mt-5 mb-5">
 
             <div className="mb-4 text-base font-semibold">
                 Patient Information

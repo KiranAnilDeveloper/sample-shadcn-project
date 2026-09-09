@@ -139,9 +139,9 @@ function StatsCard({
   subtitleColor: string;
 }) {
   return (
-    <Card>
-      <CardContent className="p-5">
-        <div className="mb-3 flex items-center justify-between">
+    <Card className=" p-1 md:p-3">
+      <CardContent className="p-3 md:p-5">
+        <div className="mb-1  md:mb-3 flex items-center justify-between">
           <span className="text-[13px] font-medium text-muted-foreground">
             {title}
           </span>
@@ -151,7 +151,7 @@ function StatsCard({
             {icon}
           </div>
         </div>
-        <div className="text-[28px] font-semibold">{value}</div>
+        <div className="text-[20px] md:text-[28px] font-semibold">{value}</div>
         <div className={`mt-1 text-xs ${subtitleColor}`}>{subtitle}</div>
       </CardContent>
     </Card>

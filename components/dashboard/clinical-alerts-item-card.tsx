@@ -33,7 +33,7 @@ export function ClinicalAlertsItemCard({
   return (
     <Card
       className={cn(
-        "rounded-xl border p-3.5",
+        "rounded-xl border p-2 md:p-3.5",
         variant.card
       )}
     >

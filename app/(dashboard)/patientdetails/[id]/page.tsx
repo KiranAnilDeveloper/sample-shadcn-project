@@ -86,9 +86,9 @@ export default async function PatientsPage( props : PatientsPageProps) {
       <PatientHeaderCard id={id}></PatientHeaderCard>
 
 
-      <div className="mt-6">
+      <div className="mt-4 md:mt-5">
           <Tabs defaultValue="overview">
-            <div className="w-full border-b-1">
+            <div className="w-full overflow-x-auto">
               <TabsList variant="line" className="rounded-none bg-transparent">
               <TabsTrigger value="OV" className={cn(paddingForTab,selectionColor)} >Overview</TabsTrigger>
               <TabsTrigger className={cn(paddingForTab,selectionColor)} value="MH">Medical History</TabsTrigger>
@@ -97,7 +97,7 @@ export default async function PatientsPage( props : PatientsPageProps) {
             </TabsList>
             </div>            
              <TabsContent value="OV">
-              <div className="flex flex-row gap-5">
+              <div className="flex flex-col md:flex-row gap-1 md:gap-5">
                   <div className="flex-1">
                     <PatientInfoCard id={id}></PatientInfoCard>
                   </div>
@@ -105,7 +105,7 @@ export default async function PatientsPage( props : PatientsPageProps) {
                     <PatientVitalsCard id={id}></PatientVitalsCard>
                   </div>
               </div>     
-              <div className="mt-4">    
+              <div className="mt-3">    
                   <DataTable viewAllHref="" showActionButton={false} actionBasePath="/patients" actionIdKey="id" data={recentAppointments} columns={appointmentColumns} title="Recent Appointments"></DataTable>
               </div>         
             </TabsContent>
